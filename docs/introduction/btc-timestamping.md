@@ -59,7 +59,7 @@ In the following, we explore the BTC Timestamping Protocol's use case in
 detail.
 
 ## Long-Range Attack: A Fundamental Threat to PoS Chains <a id="long"></a>
-By PoS chains, we refer to BFT (Byzantine-fault-tolerent) PoS chains that
+By PoS chains, we refer to BFT (Byzantine-fault-tolerant) PoS chains that
 require a 2/3 majority vote from their validators to confirm a block.
 PoS chains are not supposed to fork, and when forking happens,
 the chain is attacked:

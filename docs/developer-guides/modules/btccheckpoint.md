@@ -15,14 +15,14 @@ Learn what the Babylon BTC Checkpoint Module is and how it operates.
 The `btccheckpoint` module is responsible for receiving information about Babylon checkpoints
 submitted to Bitcoin ledger. Each valid submission is composed of two Bitcoin transactions.
 Each of those transactions must contain at least one OP_RETRUN output which contains specific
-Babylon data. To verify that those transactions are part of bitcoin ledger, each submission
+Babylon data. To verify that those transactions are part of Bitcoin ledger, each submission
 must also have merkle proof of inclusions against transaction root hash from Bitcoin
 header which is already known by `btclightclient` module.
 Data included in OP_RETURN outputs must form a valid Babylon checkpoint. As `btccheckpoint`
-does not know all rules which makes checkpoint valid, it communicates with
+does not know all the rules which makes checkpoint valid, it communicates with
 `checkpoint` module to validate it.
 After submission is deemed valid:
-- It stored and tracked by `btcheckpoint` module
+- It is stored and tracked by `btcheckpoint` module
 - `checkpointing` module is informed about the different stages of checkpoint life cycle
 
 ## Problem Statement

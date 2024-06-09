@@ -20,11 +20,11 @@ custom_edit_url: null
 ### Will my bitcoins be bridged to other blockchains?
 
 No.
-Babylon allows bitcoin holders to stake their
+Babylon allows Bitcoin holders to stake their
 bitcoins without bridging them to other blockchains,
 while providing the chain with full slashable security guarantees.
 
-### As a bitcoin staker, do I have to run a validator by myself?
+### As a Bitcoin staker, do I have to run a validator by myself?
 
 No.
 Like most PoS systems,
@@ -32,7 +32,7 @@ with the Bitcoin staking protocol,
 you can delegate your voting power to a validator that you trust.
 The validator will usually charge a commission of your staking reward.
 If the delegated validator acts maliciously, your stake will also be slashed.
-Running validator by yourself will avoid this trust and commission,
+Running a validator by yourself will avoid this trust and commission,
 putting both the stake and reward fully under your control.
 
 ### When slashing happens, will all my staked bitcoins be burned?

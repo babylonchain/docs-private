@@ -34,11 +34,11 @@ The vigilante reporter program makes the following design decisions:
 
 When a vigilant reporter is started, it needs to go through the bootstrapping process, which makes the following design decisions:
 
-- **BTC header synchronisation**: Babylon’s BTC header chain is synchronised with the BTC full node that connects to vigilante.
+- **BTC header synchronization**: Babylon’s BTC header chain is synchronized with the BTC full node that connects to vigilante.
 If the BTC header chain of Babylon falls behind the BTC full node, the bootstrapping helps the header chain catch up.
 On the other hand, if the header chain is ahead of the BTC full node, the reporter will wait until the BTC full node to catch up.
 - **Header consistency**: Babylon’s `k-deep` BTC headers are consistent with the BTC full node
-- **Checkpoint synchronisation**: historical checkpoints on BTC are reported to Babylon.
+- **Checkpoint synchronization**: historical checkpoints on BTC are reported to Babylon.
 The reporter sends checkpoints that are not `w-deep` yet in BTC to Babylon.
 The reporter also buffers all the checkpoint parts that have not been matched with a checkpoint.
 

@@ -13,7 +13,7 @@ Learn what the Babylon Zone Concierge Module is and how it operates.
 ## Summary
 
 The zone concierge module is responsible for providing BTC timestamps to headers from other Cosmos zones.
-These BTC timestamps allow Cosmos zones integrating with Babylon to achieve Bitcoin security, i.e., forking a Cosmos zone is as hard as forking Bitcoin.
+These BTC timestamps allow Cosmos zones to integrate with Babylon to achieve Bitcoin security, i.e., forking a Cosmos zone is as hard as forking Bitcoin.
 To receive Cosmos zones' headers, the zone concierge module leverages the light clients in the IBC protocol.
 Specifically, on top of the original [IBC-Go](https://github.com/cosmos/ibc-go) implementation, Babylon adds a hook that forwards headers with a valid quorum certificate to the zone concierge module.
 Upon a header from IBC, zone concierge then stores the header's metadata in the KV store.
@@ -32,9 +32,9 @@ Checkpointing canonical headers allows Babylon to act as a canonical chain oracl
 Checkpointing fork headers allows Babylon to identify dishonest majority attacks and slash equivocating validators.
 Zone concierge will not checkpoint any header that does not have a quorum certificate.
 
-Specifically, the zone concierge module aims at providing the following guarantees
+Specifically, the zone concierge module aims to provide the following guarantees
 
-- **Timestamping headers:** Babylon timestamps all Cosmos zones' headers with a valid quorum certificate from the IBC relayer, regardless whether they are on CZ canonical chains or not.
+- **Timestamping headers:** Babylon timestamps all Cosmos zones' headers with a valid quorum certificate from the IBC relayer, regardless of whether they are on CZ canonical chains or not.
 - **Verifiability of timestamps:** For any CZ header, Babylon can provide a proof that the CZ header is checkpointed by {Babylon, BTC}, where the proof is verifiable assuming access to Babylon/BTC light clients.
 
 under the following assumptions:
@@ -67,7 +67,7 @@ The light client allows a Cosmos zone to maintain a subset of headers from the c
 - **Liveness:** The IBC light client keeps growing
 when the counterparty zone has > 2/3 honest voting power and there exists > 1 honest relayer.
 
-Verifying a header is done by a special [quorum intersection mechanism](https://arxiv.org/abs/2010.07031): upon a header from the relayer, the light client checks whether the intersected voting power bewteen the quorum certificates of the current tip and the header is more than 1/3 of the voting power in the current tip.
+Verifying a header is done by a special [quorum intersection mechanism](https://arxiv.org/abs/2010.07031): upon a header from the relayer, the light client checks whether the intersected voting power between the quorum certificates of the current tip and the header is more than 1/3 of the voting power in the current tip.
 If yes, then this ensures that there exists at least one honest validator in the header's quorum certificate, and this header is agreed by all honest validators.
 Each header of a Cosmos zone carries `AppHash`, which is the root of the Merkle IAVL tree for the Cosmos zone's database.
 The `AppHash` allows a light client to verify whether an IBC packet is included in the Cosmos zone's blockchain.

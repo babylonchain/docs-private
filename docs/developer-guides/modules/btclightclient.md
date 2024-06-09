@@ -53,7 +53,7 @@ Below we outline the key design decisions for the BTC light client module:
 
 ### Base Bitcoin Header
 
-The base bitcoin header is the first Bitcoin header that Babylon maintains.
+The base Bitcoin header is the first Bitcoin header that Babylon maintains.
 This header is specified in Babylon’s genesis block, and
 is a header that is sufficiently deep.
 For example, for our testnet, we will use a Bitcoin header that is 100-deep inside
