@@ -12,7 +12,7 @@ Learn what the Babylon Epoching Module is and how it operates.
 
 ## Summary
 
-The epoching module is responsible for reducing and parameterising the frequency of updating the validator set in Babylon.
+The epoching module is responsible for reducing and parameterizing the frequency of updating the validator set in Babylon.
 The Babylon blockchain is divided into epochs, and each epoch contains a fixed number of consecutive blocks.
 All staking-related messages (creating validator, delegating, undelegating, and redelegating) are enqueued to the message queue of the current epoch.
 At the end of each epoch, the epoching module will execute all staking-related messages, then update the validator set w.r.t. the voting power distribution of validators.
@@ -26,8 +26,8 @@ If the validator set changes upon every block, then Babylon has to checkpoint to
 In addition, the Cosmos community also observed that frequent validator set updates make it challenging to implement threshold cryptography, light clients, fair leader election, and staking derivatives, as discussed in [ADR-039](https://github.com/cosmos/cosmos-sdk/blob/main/docs/architecture/adr-039-epoched-staking.md).
 
 In order to reduce the frequency of validator set updates, a natural solution is to implement the epoching mechanism (aka epoched staking), which divides the blockchain into epochs and triggers a validator set update per epoch.
-The idea of epoching was proposed and formalised in [ADR-039](https://github.com/cosmos/cosmos-sdk/blob/main/docs/architecture/adr-039-epoched-staking.md), and there have been multiple efforts (https://github.com/cosmos/cosmos-sdk/pull/8829, https://github.com/cosmos/cosmos-sdk/pull/10132, https://github.com/cosmos/cosmos-sdk/pull/10173) of implementing it.
-Since Babylon has some extra design goals (e.g., checkpointing epochs) and these efforts have discontinued, Babylon implements its own epoching module.
+The idea of epoching was proposed and formalized in [ADR-039](https://github.com/cosmos/cosmos-sdk/blob/main/docs/architecture/adr-039-epoched-staking.md), and there have been multiple efforts (https://github.com/cosmos/cosmos-sdk/pull/8829, https://github.com/cosmos/cosmos-sdk/pull/10132, https://github.com/cosmos/cosmos-sdk/pull/10173) of implementing it.
+Since Babylon has some extra design goals (e.g., checkpointing epochs) and these efforts have been discontinued, Babylon implements its own epoching module.
 
 In addition, in order to achieve slashable safety, Babylon has to implement Bitcoin-assisted unbonding, where an unbonding request is finished only when the corresponding block has been checkpointed on Bitcoin.
 With the epoching mechanism, all unbonding requests in an epoch will be finished upon this epoch has been checkpointed on Bitcoin.
@@ -80,7 +80,7 @@ In the staking module, these messages include
 - `MsgDelegate` for delegating coins from a delegator to a validator
 - `MsgBeginRedelegate` for redelegating coins from a delegator and source validator to a destination validator.
 - `MsgUndelegate` for undelegating from a delegator and a validator.
-- `MsgCancelUnbondingDelegation` for cancelling unbonding delegation for a delegator
+- `MsgCancelUnbondingDelegation` for canceling unbonding delegation for a delegator
 
 Within these messages, `MsgCreateValidator`, `MsgDelegate`, `MsgBeginRedelegate`, and `MsgUndelegate` affect the validator set.
 Since Babylon requires the validator set to be unchanged within an epoch, it has to avoid processing these messages in the middle of epochs.
